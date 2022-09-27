@@ -4,6 +4,19 @@ function Question({ question, onAnswered }) {
   const [timeRemaining, setTimeRemaining] = useState(10);
   
   // add useEffect code
+  useEffect(()=>{
+    if(timeRemaining>0){
+      const timeOutId = setTimeout(()=>setTimeRemaining(timeRemaining-1),1000)
+/*       return () =>{
+        clearTimeout(timeOutId)
+      } */
+    } else{
+      setTimeRemaining(10)
+      onAnswered(false)
+    }
+    //clearTimeOut() or clearInterval()
+    
+  },[timeRemaining])
 
   function handleAnswer(isCorrect) {
     setTimeRemaining(10);
